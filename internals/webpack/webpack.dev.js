@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const paths = require('../config/paths');
 
@@ -38,12 +39,12 @@ module.exports = function config() {
     },
 
     plugins: [
+      new HtmlWebpackPlugin({
+        inject: 'body',
+        template: paths.appHtml
+      }),
       new webpack.HotModuleReplacementPlugin(),
-      new ReactRefreshWebpackPlugin(),
-      new webpack.IgnorePlugin({
-        resourceRegExp: /^\.\/locale$/,
-        contextRegExp: /moment$/
-      })
+      new ReactRefreshWebpackPlugin()
     ],
 
     devtool: 'cheap-module-source-map'

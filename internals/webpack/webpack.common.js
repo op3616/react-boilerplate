@@ -1,12 +1,10 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const paths = require('../config/paths');
 
 function config() {
-  const isEnvProduction = process.env.NODE_ENV === 'production';
-
   const appConfig = {
     name: 'app',
     entry: paths.appIndex,
@@ -104,27 +102,14 @@ function config() {
     },
 
     plugins: [
-      new HtmlWebpackPlugin({
-        inject: 'body',
-        template: paths.appHtml,
-        ...(isEnvProduction && {
-          minify: {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true
-          }
-        })
-      }),
       new webpack.DefinePlugin({
         'process.env.APP_NAME': JSON.stringify('React App'),
         'process.env.APP_ORIGIN': JSON.stringify('http://localhost:3000')
+      }),
+      new WebpackManifestPlugin({ fileName: 'assets.json', publicPath: '/' }),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^\.\/locale$/,
+        contextRegExp: /moment$/
       })
     ].filter(Boolean)
   };
