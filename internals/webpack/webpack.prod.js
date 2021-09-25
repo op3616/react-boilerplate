@@ -3,6 +3,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const InlineChunkHtmlPlugin = require('inline-chunk-html-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const paths = require('../config/paths');
 
 module.exports = function config() {
   const isEnvProductionProfile = process.argv.includes('--profile');
@@ -53,7 +55,15 @@ module.exports = function config() {
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
       }),
-      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/])
+      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: paths.appPublic,
+            filter: filename => filename !== paths.appHtml
+          }
+        ]
+      })
     ],
 
     devtool: 'source-map'
