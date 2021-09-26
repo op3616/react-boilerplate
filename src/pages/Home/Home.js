@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <div>
       <div>Home running</div>
-      <div className='box'>
-        <img src={Image} alt='image url-loader from webpack' />
+      <div className="box">
+        <img src={Image} alt="url-loader from webpack" />
         <SvgImage />
       </div>
     </div>
