@@ -21,7 +21,8 @@
     "lint": "eslint --ext js,jsx,ts,tsx src/",
     "lint:fix": "eslint --fix --ext js,jsx,ts,tsx src/",
     "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
-    "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\""
+    "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
+    "test": "jest"
   },
   "dependencies": {
     "history": "4.10.1",
@@ -43,6 +44,7 @@
     "@babel/runtime": "^7.15.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@svgr/webpack": "^5.5.0",
+    "babel-jest": "^27.2.2",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "copy-webpack-plugin": "^9.0.1",
@@ -62,6 +64,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "inline-chunk-html-plugin": "^1.1.1",
+    "jest": "^27.2.2",
     "mini-css-extract-plugin": "^2.3.0",
     "prettier": "^2.4.1",
     "react-refresh": "^0.10.0",

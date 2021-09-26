@@ -40,5 +40,23 @@
       "import/extensions": [".js", ".jsx"]
     },
     "import/ignore": ["node_modules"]
-  }
+  },
+  "overrides": [{
+      "files": ["*.test.js"],
+      "env": {
+        "jest": true
+      }
+    },
+    {
+      "files": [
+        ".eslintrc",
+        "babel.config.js",
+        "jest.config.js",
+        "webpack.config.js"
+      ],
+      "env": {
+        "node": true
+      }
+    }
+  ]
 }

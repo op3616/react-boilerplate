@@ -5,7 +5,10 @@
     "source.fixAll.eslint": true
   },
   "cSpell.words": [
+    "automock",
     "pmmmwh",
-    "svgr"
+    "Serializers",
+    "svgr",
+    "unmocked"
   ]
 }
